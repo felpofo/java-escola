@@ -1,37 +1,50 @@
-package app;
-
+import java.util.Scanner;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Bhaskara {
-    public static void main(String[] args) {
-        int a = 1;
-        int b = -7;
-        int c = 12;
-        
-        List<Integer> lenis = calcular(a, b, c);
-        
-        System.out.println(lenis.get(0));
-        System.out.println(lenis.get(1));
-    }
-    
-    public static List<Integer> calcular(int a, int b, int c) throws Exception {
-        DecimalFormat formatter = new DecimalFormat();
-        
-        double bottom = 2 * a;
-        long delta = (b*b) - (4 * a * c);
-        
-        if (delta < 0) throw new Exception("Delta is negative");
+  private static final Scanner scanner = new Scanner(System.in);
 
-        double root = Math.sqrt(delta);
-        double end1 = (-b + root) / bottom;
-        double end2 = (-b - root) / bottom;
+  public static void main(String[] args) {
+
+    System.out.print("'A' value: ");
+    double a = scanner.nextDouble();
+    System.out.print("\n-------\n");
+
+    System.out.print("'B' value: ");
+    double b = scanner.nextDouble();
+    System.out.print("\n-------\n");
     
-        return new ArrayList(Arrays.asList(
-            formatter.format(end1),
-            formatter.format(end2)
-        ));
+    System.out.print("'C' value: ");
+    double c = scanner.nextDouble();
+    System.out.print("\n-------\n");
+
+    try {
+      double[] lenis = calcular(a, b, c);
+
+      DecimalFormat df = new DecimalFormat();
+
+      System.out.println(df.format(lenis[0]));
+      System.out.println(df.format(lenis[1]));
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
+  }
+
+  public static double[] calcular(double a, double b, double c) throws Exception {
+    double bottom = 2 * a;
+    double delta = (b * b) - (4 * a * c);
+
+    if (delta < 0)
+      throw new Exception("Delta is negative");
+
+    double root = Math.sqrt(delta);
+
+    if (root % 1 != 0)
+      throw new Exception("Root isn't an integer");
+
+    double end1 = (-b + root) / bottom;
+    double end2 = (-b - root) / bottom;
+
+    return new double[] { end1, end2 };
+  }
 }

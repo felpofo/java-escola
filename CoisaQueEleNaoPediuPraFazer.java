@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class CoisaQueEleNaoPediuPraFazer {
   private static final String RESET = "\u001B[0m";
   private static final String BRIGHT_RED = "\u001B[91m";
   private static final String BRIGHT_GREEN = "\u001B[92m";
@@ -12,55 +12,49 @@ public class Main {
     Dictionary<String, Object> data = inputData();
 
     System.out.printf("Seu nome é %s%s%s e voce nasceu em %s%s%s\n",
-      BRIGHT_BLUE, data.get("nomeDoAmigao"), RESET,
-      BRIGHT_RED, Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(data.get("idadeDoAmigao").toString()), RESET
-    );
+        BRIGHT_BLUE, data.get("nomeDoAmigao"), RESET,
+        BRIGHT_RED, Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(data.get("idadeDoAmigao").toString()),
+        RESET);
 
     System.out.printf("A %smédia de altura%s dos andares do prédio é de %s%.1f%s\n",
-      BRIGHT_BLUE, RESET,
-      BRIGHT_GREEN, (float) data.get("alturaPredio") / (int) data.get("totalAndarPredio"), RESET
-    );
+        BRIGHT_BLUE, RESET,
+        BRIGHT_GREEN, (float) data.get("alturaPredio") / (int) data.get("totalAndarPredio"), RESET);
 
     float baseRet = (float) data.get("baseDoRetangulo");
     float alturaRet = (float) data.get("alturaDoRetangulo");
 
     double areaRet = baseRet * alturaRet;
-    double perimetroRet =
-      baseRet
-      + alturaRet
-      + (Math.sqrt(
-          baseRet * baseRet
-        + alturaRet * alturaRet
-      ));
+    double perimetroRet = baseRet
+        + alturaRet
+        + (Math.sqrt(
+            baseRet * baseRet
+                + alturaRet * alturaRet));
 
     System.out.printf("A %sárea%s do %sretângulo%s é %s%.0f (%.2f)%s e o %sperímetro%s é %s%.0f (%.2f)%s\n",
-      BRIGHT_BLUE, RESET,
-      BRIGHT_CYAN, RESET,
-      BRIGHT_GREEN, areaRet, areaRet, RESET,
-      BRIGHT_BLUE, RESET,
-      BRIGHT_GREEN, perimetroRet, perimetroRet, RESET
-    );
+        BRIGHT_BLUE, RESET,
+        BRIGHT_CYAN, RESET,
+        BRIGHT_GREEN, areaRet, areaRet, RESET,
+        BRIGHT_BLUE, RESET,
+        BRIGHT_GREEN, perimetroRet, perimetroRet, RESET);
 
     System.out.printf("A %scircunferencia%s do %scírculo%s é aproximadamente %s%.2f%s\n",
-      BRIGHT_BLUE, RESET,
-      BRIGHT_CYAN, RESET,
-      BRIGHT_GREEN, 2 * 3.141535 * (float) data.get("raioDoCirculo"), RESET
-    );
+        BRIGHT_BLUE, RESET,
+        BRIGHT_CYAN, RESET,
+        BRIGHT_GREEN, 2 * 3.141535 * (float) data.get("raioDoCirculo"), RESET);
 
     System.out.printf("""
-      %sInformações do livro:%s
-      %s├ Nome:%s %s%s%s
-      %s├ Autor:%s %s%s%s
-      %s└ Data de publicação:%s %s%s%s
-      """,
-      BRIGHT_YELLOW, RESET,
-      BRIGHT_YELLOW, RESET,
-      BRIGHT_CYAN, data.get("nomeDoLivro"), RESET,
-      BRIGHT_YELLOW, RESET,
-      BRIGHT_CYAN, data.get("autorDoLivro"), RESET,
-      BRIGHT_YELLOW, RESET,
-      BRIGHT_CYAN, data.get("publDoLivro"), RESET
-    );
+        %sInformações do livro:%s
+        %s├ Nome:%s %s%s%s
+        %s├ Autor:%s %s%s%s
+        %s└ Data de publicação:%s %s%s%s
+        """,
+        BRIGHT_YELLOW, RESET,
+        BRIGHT_YELLOW, RESET,
+        BRIGHT_CYAN, data.get("nomeDoLivro"), RESET,
+        BRIGHT_YELLOW, RESET,
+        BRIGHT_CYAN, data.get("autorDoLivro"), RESET,
+        BRIGHT_YELLOW, RESET,
+        BRIGHT_CYAN, data.get("publDoLivro"), RESET);
   }
 
   public static Dictionary<String, Object> inputData() {
@@ -104,28 +98,32 @@ public class Main {
     while (true) {
       Scanner scanner = new Scanner(System.in);
       String value = scanner.nextLine();
+      
+      scanner.close();
 
-        if (type.toString().equals("class java.lang.String")) {
+      if (type.toString().equals("class java.lang.String")) {
+        return value;
+      } else if (type.toString().equals("class java.lang.Integer")) {
+        try {
+          Integer.parseInt(value);
           return value;
-        } else if (type.toString().equals("class java.lang.Integer")) {
-          try {
-            Integer.parseInt(value);
-                    return value;
-          } catch (Exception ignored) { }
-        } else if (type.toString().equals("class java.lang.Float")) {
-          try {
-            Integer.parseInt(value);
-                    return value;
-          } catch (Exception ignored) { }
-        } else if (type.toString().equals("class java.lang.Double")) {
-          try {
-            Integer.parseInt(value);
-                    return value;
-          } catch (Exception ignored) { }
+        } catch (Exception ignored) {
         }
+      } else if (type.toString().equals("class java.lang.Float")) {
+        try {
+          Integer.parseInt(value);
+          return value;
+        } catch (Exception ignored) {
+        }
+      } else if (type.toString().equals("class java.lang.Double")) {
+        try {
+          Integer.parseInt(value);
+          return value;
+        } catch (Exception ignored) {
+        }
+      }
 
       System.out.print("Valor inválido, tente novamente: ");
     }
   }
 }
-
