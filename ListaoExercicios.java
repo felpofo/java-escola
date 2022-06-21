@@ -253,9 +253,9 @@ class Eight {
     System.out.print("\n\n-------\n\n");
 
     double liters = totalPrice / oilPrice;
-    double meuPau = liters * carsKmPerLiter;
+    double podeAcontecer = liters * carsKmPerLiter;
 
-    System.out.printf("Com R$%.2f você poderá rodar %.2f quilômetros\n", totalPrice, meuPau);
+    System.out.printf("Com R$%.2f você poderá rodar %.2f quilômetros\n", totalPrice, podeAcontecer);
   }
 
 }

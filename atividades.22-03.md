@@ -1,9 +1,3 @@
-## Notas
-
-no google mesmo tem aquelas opção de como vai abrir e o stackedit funcionou entao se tu nao tiver nenhum leitor de markdown usa ele mas no typora é mais facil de ler :)
-
----
-
 # Exercicio 0
 
 > ### Encontre (se houverem) erros nos seguintes comandos de atribuição
